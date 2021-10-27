@@ -1,7 +1,6 @@
 import { getAllPosts } from "../utils";
 
 const Blog = ({ posts }) => {
-  console.log(posts);
   return (
     <div>
       {posts.map((p) => (
@@ -18,6 +17,7 @@ export const getStaticProps = async () => {
     props: {
       posts,
     },
+    revalidate: 60,
   };
 };
 
