@@ -19,8 +19,15 @@ export default function Home({ test }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <button
+          type="button"
+          onClick={() => {
+            throw new Error("Sentry Frontend Error");
+          }}
+        >
+          Throw error
+        </button>
         <Search value={query} onChange={setQuery} />
-        {test}
         <Heros heros={heros} />
         <Pagination numberOfPages={ceil(total / 20)} />
       </main>
