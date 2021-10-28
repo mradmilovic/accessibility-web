@@ -5,7 +5,7 @@ import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import ceil from "lodash/ceil";
 
-export default function Home({ test }) {
+export default function Home({ time }) {
   const [heros, setHeros] = useState([]);
   const [query, setQuery] = useState("");
   const [total, setTotal] = useState();
@@ -19,6 +19,7 @@ export default function Home({ test }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        {time}
         <button
           type="button"
           onClick={() => {
@@ -36,10 +37,10 @@ export default function Home({ test }) {
 }
 
 export const getStaticProps = () => {
-  const test = "TEST";
+  const time = new Date();
   return {
     props: {
-      test,
+      time,
     },
     revalidate: 60,
   };
