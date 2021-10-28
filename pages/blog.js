@@ -13,13 +13,8 @@ const Blog = ({ posts, time }) => {
 };
 
 export const getStaticProps = async () => {
-  let posts = [];
   Sentry.captureException(new Error(process.cwd()));
-  try {
-    posts = getAllPosts();
-  } catch (err) {
-    Sentry.captureException(err);
-  }
+  const posts = getAllPosts();
 
   const time = new Date();
   return {
