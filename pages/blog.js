@@ -1,4 +1,5 @@
 import { getAllPosts } from "../utils";
+import * as Sentry from "@sentry/nextjs";
 
 const Blog = ({ posts }) => {
   return (

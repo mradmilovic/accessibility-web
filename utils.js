@@ -3,7 +3,6 @@ import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
 import take from "lodash/take";
-import * as Sentry from "@sentry/nextjs";
 
 const POSTS_PATH_STR = "posts";
 const getPostsPath = () => path.join(process.cwd(), POSTS_PATH_STR);
