@@ -9,7 +9,7 @@ module.exports = (phase, defaultConfig) => {
     {
       ...defaultConfig,
       // productionBrowserSourceMaps: true,
-
+      swcMinify: true,
       webpack: (config) => {
         config.module.rules.push({
           test: /\.svg/,
