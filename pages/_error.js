@@ -1,5 +1,5 @@
 import NextErrorComponent from "next/error";
-
+import { GetStaticPropsContext } from "next";
 import * as Sentry from "@sentry/nextjs";
 
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
@@ -53,13 +53,11 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
   try {
     Sentry.captureException(
       new Error(
-        `_error.js getInitialProps missing data at path: ${asPath}. ${JSON.stringify(
-          res
-        )}`
+        `_error.js getInitialProps missing data at path: ${asPath}. ${res.statusCode} ${res.statusMessage}`
       )
     );
   } catch (err) {
-    Sentry.captureException("Stringify error", err);
+    Sentry.captureException(err);
   } finally {
     await Sentry.flush(2000);
   }
