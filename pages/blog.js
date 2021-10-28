@@ -21,6 +21,7 @@ export const getStaticProps = async () => {
       time: time.toISOString(),
       posts,
     },
+    notFound: false,
     revalidate: 60,
   };
 };
