@@ -40,7 +40,7 @@ export const getStaticProps = () => {
   const time = new Date();
   return {
     props: {
-      time,
+      time: time.toISOString(),
     },
     revalidate: 60,
   };
