@@ -53,9 +53,7 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
   Sentry.captureException(
     new Error(
       `_error.js getInitialProps missing data at path: ${asPath}. ${JSON.stringify(
-        res,
-        null,
-        4
+        res
       )}`
     )
   );
