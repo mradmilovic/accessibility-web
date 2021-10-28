@@ -3,6 +3,7 @@ import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
 import take from "lodash/take";
+import * as Sentry from "@sentry/nextjs";
 
 const POSTS_PATH_STR = "posts";
 const getPostsPath = () => path.join(process.cwd(), POSTS_PATH_STR);
@@ -28,7 +29,7 @@ export const getPostData = async (slug) => {
 };
 
 export const getAllPosts = () => {
-  console.log(postFilePaths);
+  Sentry.captureException(new Error(process.cwd()));
   const posts = postFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(getPostsPath(), filePath));
     const { content, data } = matter(source);
@@ -39,7 +40,6 @@ export const getAllPosts = () => {
       filePath,
     };
   });
-
   return posts
     .filter((p) => p.data.published)
     .sort((first, second) =>
