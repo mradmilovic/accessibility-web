@@ -11,6 +11,7 @@ const Blog = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
+  Sentry.captureException(new Error(process.cwd()));
   const posts = getAllPosts();
 
   return {

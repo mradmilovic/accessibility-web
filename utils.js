@@ -29,7 +29,6 @@ export const getPostData = async (slug) => {
 };
 
 export const getAllPosts = () => {
-  Sentry.captureException(new Error(process.cwd()));
   const posts = postFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(getPostsPath(), filePath));
     const { content, data } = matter(source);
